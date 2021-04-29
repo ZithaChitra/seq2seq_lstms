@@ -1,3 +1,4 @@
+import os
 from typing import Dict
 import importlib
 import numpy as np
@@ -9,6 +10,7 @@ import mlflow
 from mlflow.models.signature import ModelSignature
 from mlflow.types.schema import Schema, TensorSpec
 
+api_key = os.environ['WANDB_API_KEY']
 
 @click.command()
 @click.argument("experiment-config",
@@ -40,7 +42,9 @@ def main(experiment_config, latent_dim: int, decay: float, dropout: float,
 
     model = exp_config.get("model")
 
-    wandb.login()
+    wandb.login(key=api_key)
+
+
     train(proj_name, model, dataset_cls, net_name, net_args, dataset_args)
 
 

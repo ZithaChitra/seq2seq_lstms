@@ -27,10 +27,11 @@ class Model():
         self.data = dataset_cls(**dataset_args)
         self.data.load_or_generate()
         self.data.preprocess()
+        self.data_shapes = self.data.io_shapes
 
         self.net_args = net_args
-        self.network = network_fn(num_encoder_tokens=self.data.io_shapes[0],
-                                  num_decoder_tokens=self.data.io_shapes[1])
+        self.network = network_fn(num_encoder_tokens=self.data_shapes[0],
+                                  num_decoder_tokens=self.data_shapes[1])
 
     @property
     def weights_filename(self) -> str:
