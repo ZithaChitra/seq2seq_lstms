@@ -1,0 +1,45 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.10.28
+    code_path: code/manythings/training/train.py
+    framework: tensorflow
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    python_version: 3.8.9
+    t:
+      1:
+      - 3
+      2:
+      - 3
+      3:
+      - 2
+      4: 3.8.9
+      5: 0.10.28
+      8:
+      - 5
+dataset_args:
+  desc: null
+  value: null
+dataset_cls:
+  desc: null
+  value: ManyThings
+model:
+  desc: null
+  value: Model
+net_args:
+  desc: null
+  value:
+    decay: 1.0e-06
+    dropout: 0.2
+    epochs: 3
+    hidden_layer_size: 300
+    latent_dim: 300
+    learn-rate: 0.01
+    learn_rate: 0.01
+    momentum: 0.9
+net_fn:
+  desc: null
+  value: nn_lstm1

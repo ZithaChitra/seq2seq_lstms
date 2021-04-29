@@ -1,0 +1,17 @@
+setup.py
+ManyThings.egg-info/PKG-INFO
+ManyThings.egg-info/SOURCES.txt
+ManyThings.egg-info/dependency_links.txt
+ManyThings.egg-info/requires.txt
+ManyThings.egg-info/top_level.txt
+manythings/__init__.py
+manythings/util_yaml.py
+manythings/data/__init__.py
+manythings/data/dta_ManyThings.py
+manythings/data/util.py
+manythings/models/Model.py
+manythings/models/__init__.py
+manythings/networks/__init__.py
+manythings/networks/nn_lstm1.py
+manythings/training/__init__.py
+manythings/training/train.py
