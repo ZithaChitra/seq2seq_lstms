@@ -2,3 +2,4 @@ numpy==1.19.5
 pyyaml
 click
 mlflow
+wandb
