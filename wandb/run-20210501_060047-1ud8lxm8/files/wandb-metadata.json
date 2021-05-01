@@ -1,0 +1,22 @@
+{
+    "os": "Linux-5.4.0-1042-gcp-x86_64-with-glibc2.27",
+    "python": "3.8.9",
+    "heartbeatAt": "2021-05-01T06:00:50.764572",
+    "startedAt": "2021-05-01T06:00:47.881849",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "manythings/training/train.py",
+    "codePath": "manythings/training/train.py",
+    "git": {
+        "remote": "https://github.com/ZithaChitra/seq2seq_lstms",
+        "commit": "651675a851ced4bd7bb4e2547f533cc301d639d6"
+    },
+    "email": "<>",
+    "root": "/home/runner/basiclstm",
+    "host": "69041cd40bf0",
+    "username": "runner",
+    "executable": "/opt/virtualenvs/python3/bin/python"
+}

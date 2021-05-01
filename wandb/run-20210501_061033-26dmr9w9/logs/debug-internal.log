@@ -1,0 +1,74 @@
+2021-05-01 06:10:34,868 INFO    MainThread:98 [internal.py:wandb_internal():88] W&B internal server running at pid: 98, started at: 2021-05-01 06:10:34.868577
+2021-05-01 06:10:34,870 DEBUG   HandlerThread:98 [handler.py:handle_request():121] handle_request: check_version
+2021-05-01 06:10:34,871 INFO    WriterThread:98 [datastore.py:open_for_write():77] open: /home/runner/basiclstm/wandb/run-20210501_061033-26dmr9w9/run-26dmr9w9.wandb
+2021-05-01 06:10:34,873 DEBUG   SenderThread:98 [sender.py:send():173] send: header
+2021-05-01 06:10:34,873 DEBUG   SenderThread:98 [sender.py:send_request():183] send_request: check_version
+2021-05-01 06:10:34,937 DEBUG   SenderThread:98 [sender.py:send():173] send: run
+2021-05-01 06:11:04,938 DEBUG   HandlerThread:98 [handler.py:handle_request():121] handle_request: shutdown
+2021-05-01 06:11:04,938 INFO    HandlerThread:98 [handler.py:finish():629] shutting down handler
+2021-05-01 06:11:04,948 INFO    WriterThread:98 [datastore.py:close():258] close: /home/runner/basiclstm/wandb/run-20210501_061033-26dmr9w9/run-26dmr9w9.wandb
+2021-05-01 06:11:08,551 ERROR   SenderThread:98 [retry.py:__call__():114] Retry attempt failed:
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 445, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 440, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/lib/python3.8/http/client.py", line 1344, in getresponse
+    response.begin()
+  File "/usr/lib/python3.8/http/client.py", line 307, in begin
+    version, status, reason = self._read_status()
+  File "/usr/lib/python3.8/http/client.py", line 268, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/lib/python3.8/socket.py", line 669, in readinto
+    return self._sock.recv_into(b)
+  File "/usr/lib/python3.8/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.8/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+socket.timeout: The read operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/requests/adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 755, in urlopen
+    retries = retries.increment(
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/urllib3/util/retry.py", line 532, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/urllib3/packages/six.py", line 735, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 699, in urlopen
+    httplib_response = self._make_request(
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 447, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 336, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='api.wandb.ai', port=443): Read timed out. (read timeout=10)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/wandb/old/retry.py", line 100, in __call__
+    result = self._call_fn(*args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/wandb/sdk/internal/internal_api.py", line 127, in execute
+    return self.client.execute(*args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/wandb/vendor/gql-0.2.0/gql/client.py", line 52, in execute
+    result = self._get_result(document, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/wandb/vendor/gql-0.2.0/gql/client.py", line 60, in _get_result
+    return self.transport.execute(document, *args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/wandb/vendor/gql-0.2.0/gql/transport/requests.py", line 38, in execute
+    request = requests.post(self.url, **post_args)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/requests/api.py", line 119, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/requests/sessions.py", line 542, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/requests/sessions.py", line 655, in send
+    r = adapter.send(request, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/requests/adapters.py", line 529, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='api.wandb.ai', port=443): Read timed out. (read timeout=10)
+2021-05-01 06:18:29,398 INFO    MainThread:98 [internal.py:handle_exit():78] Internal process exited

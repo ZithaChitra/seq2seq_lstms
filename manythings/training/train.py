@@ -1,4 +1,3 @@
-import os
 from typing import Dict
 import importlib
 import numpy as np
@@ -10,7 +9,7 @@ import mlflow
 from mlflow.models.signature import ModelSignature
 from mlflow.types.schema import Schema, TensorSpec
 
-api_key = os.environ['WANDB_API_KEY']
+# api_key = os.environ['WANDB_API_KEY']
 
 @click.command()
 @click.argument("experiment-config",
@@ -42,7 +41,7 @@ def main(experiment_config, latent_dim: int, decay: float, dropout: float,
 
     model = exp_config.get("model")
 
-    wandb.login(key=api_key)
+    wandb.login()
 
 
     train(proj_name, model, dataset_cls, net_name, net_args, dataset_args)
@@ -76,11 +75,15 @@ def train(
         "dataset_args": dataset_args
     }
 
-    # input_schema = Schema([
-    #     TensorSpec(np.dtype(np.uint8), (-1, 28, 28, 1)),
-    # ])
-    # output_schema = Schema([TensorSpec(np.dtype(np.float32), (-1, 10))])
-    # signature = ModelSignature(inputs=input_schema, outputs=output_schema)
+    input_schema = Schema([
+        TensorSpec(np.dtype(np.uint8), (-1, 71), "encoder_input"),
+		 TensorSpec(np.dtype(np.uint8), (-1, 93), "decoder_input")
+    ])
+	
+
+    output_schema = Schema([TensorSpec(np.dtype(np.float32), (-1, 93))])
+
+    signature = ModelSignature(inputs=input_schema, outputs=output_schema)
 
     with wandb.init(project=proj_name, config=config):
         """"""
@@ -93,9 +96,9 @@ def train(
 			 )]
 
         model.fit(callbacks=callbacks)
-        # mlflow.keras.save_model(model.network,
-        #                         "saved_models/seq2seq",
-        #                         signature=signature)
+        mlflow.keras.save_model(model.network,
+                                "saved_models/seq2seq",
+                                signature=signature)
 
 
 if __name__ == "__main__":

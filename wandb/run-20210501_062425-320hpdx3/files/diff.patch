@@ -1,0 +1,105 @@
+diff --git a/manythings/models/Model.py b/manythings/models/Model.py
+index 7b01856..c9af1aa 100644
+--- a/manythings/models/Model.py
++++ b/manythings/models/Model.py
+@@ -32,6 +32,9 @@ class Model():
+         self.net_args = net_args
+         self.network = network_fn(num_encoder_tokens=self.data_shapes[0],
+                                   num_decoder_tokens=self.data_shapes[1])
++        self.network.summary()
++
++
+ 
+     @property
+     def weights_filename(self) -> str:
+diff --git a/manythings/models/__pycache__/Model.cpython-38.pyc b/manythings/models/__pycache__/Model.cpython-38.pyc
+index 0e7457d..6c10f40 100644
+Binary files a/manythings/models/__pycache__/Model.cpython-38.pyc and b/manythings/models/__pycache__/Model.cpython-38.pyc differ
+diff --git a/manythings/training/train.py b/manythings/training/train.py
+index b020ac9..c89df69 100644
+--- a/manythings/training/train.py
++++ b/manythings/training/train.py
+@@ -1,4 +1,3 @@
+-import os
+ from typing import Dict
+ import importlib
+ import numpy as np
+@@ -10,7 +9,7 @@ import mlflow
+ from mlflow.models.signature import ModelSignature
+ from mlflow.types.schema import Schema, TensorSpec
+ 
+-api_key = os.environ['WANDB_API_KEY']
++# api_key = os.environ['WANDB_API_KEY']
+ 
+ @click.command()
+ @click.argument("experiment-config",
+@@ -42,7 +41,7 @@ def main(experiment_config, latent_dim: int, decay: float, dropout: float,
+ 
+     model = exp_config.get("model")
+ 
+-    wandb.login(key=api_key)
++    wandb.login()
+ 
+ 
+     train(proj_name, model, dataset_cls, net_name, net_args, dataset_args)
+@@ -76,11 +75,15 @@ def train(
+         "dataset_args": dataset_args
+     }
+ 
+-    # input_schema = Schema([
+-    #     TensorSpec(np.dtype(np.uint8), (-1, 28, 28, 1)),
+-    # ])
+-    # output_schema = Schema([TensorSpec(np.dtype(np.float32), (-1, 10))])
+-    # signature = ModelSignature(inputs=input_schema, outputs=output_schema)
++    input_schema = Schema([
++        TensorSpec(np.dtype(np.uint8), (-1, 71), "encoder_input"),
++		 TensorSpec(np.dtype(np.uint8), (-1, 93), "decoder_input")
++    ])
++	
++
++    output_schema = Schema([TensorSpec(np.dtype(np.float32), (-1, 93))])
++
++    signature = ModelSignature(inputs=input_schema, outputs=output_schema)
+ 
+     with wandb.init(project=proj_name, config=config):
+         """"""
+@@ -93,9 +96,9 @@ def train(
+ 			 )]
+ 
+         model.fit(callbacks=callbacks)
+-        # mlflow.keras.save_model(model.network,
+-        #                         "saved_models/seq2seq",
+-        #                         signature=signature)
++        mlflow.keras.save_model(model.network,
++                                "saved_models/seq2seq",
++                                signature=signature)
+ 
+ 
+ if __name__ == "__main__":
+diff --git a/wandb/debug-internal.log b/wandb/debug-internal.log
+index aaf5dfb..b0561aa 120000
+--- a/wandb/debug-internal.log
++++ b/wandb/debug-internal.log
+@@ -1 +1 @@
+-run-20210429_113545-t1lx2ezc/logs/debug-internal.log
+\ No newline at end of file
++run-20210501_062425-320hpdx3/logs/debug-internal.log
+\ No newline at end of file
+diff --git a/wandb/debug.log b/wandb/debug.log
+index b842e25..e506754 120000
+--- a/wandb/debug.log
++++ b/wandb/debug.log
+@@ -1 +1 @@
+-run-20210429_113545-t1lx2ezc/logs/debug.log
+\ No newline at end of file
++run-20210501_062425-320hpdx3/logs/debug.log
+\ No newline at end of file
+diff --git a/wandb/latest-run b/wandb/latest-run
+index 254df77..63146a0 120000
+--- a/wandb/latest-run
++++ b/wandb/latest-run
+@@ -1 +1 @@
+-run-20210429_113545-t1lx2ezc
+\ No newline at end of file
++run-20210501_062425-320hpdx3
+\ No newline at end of file

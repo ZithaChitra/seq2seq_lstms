@@ -1,0 +1,31 @@
+2021-05-01 06:00:48,822 INFO    MainThread:707 [internal.py:wandb_internal():88] W&B internal server running at pid: 707, started at: 2021-05-01 06:00:48.821667
+2021-05-01 06:00:48,825 DEBUG   HandlerThread:707 [handler.py:handle_request():121] handle_request: check_version
+2021-05-01 06:00:48,825 INFO    WriterThread:707 [datastore.py:open_for_write():77] open: /home/runner/basiclstm/wandb/run-20210501_060047-1ud8lxm8/run-1ud8lxm8.wandb
+2021-05-01 06:00:48,827 DEBUG   SenderThread:707 [sender.py:send():173] send: header
+2021-05-01 06:00:48,828 DEBUG   SenderThread:707 [sender.py:send_request():183] send_request: check_version
+2021-05-01 06:00:48,900 DEBUG   SenderThread:707 [sender.py:send():173] send: run
+2021-05-01 06:00:48,975 INFO    SenderThread:707 [sender.py:_start_run_threads():678] run started: 1ud8lxm8 with start time 1619848847
+2021-05-01 06:00:48,975 DEBUG   SenderThread:707 [sender.py:send():173] send: summary
+2021-05-01 06:00:48,976 INFO    SenderThread:707 [sender.py:_save_file():808] saving file wandb-summary.json with policy end
+2021-05-01 06:00:48,976 DEBUG   HandlerThread:707 [handler.py:handle_request():121] handle_request: run_start
+2021-05-01 06:00:50,764 DEBUG   HandlerThread:707 [meta.py:__init__():39] meta init
+2021-05-01 06:00:50,764 DEBUG   HandlerThread:707 [meta.py:__init__():53] meta init done
+2021-05-01 06:00:50,764 DEBUG   HandlerThread:707 [meta.py:probe():210] probe
+2021-05-01 06:00:50,766 DEBUG   HandlerThread:707 [meta.py:_setup_git():200] setup git
+2021-05-01 06:00:50,788 DEBUG   HandlerThread:707 [meta.py:_setup_git():207] setup git done
+2021-05-01 06:00:50,788 DEBUG   HandlerThread:707 [meta.py:_save_code():89] save code
+2021-05-01 06:00:50,796 DEBUG   HandlerThread:707 [meta.py:_save_code():110] save code done
+2021-05-01 06:00:50,797 DEBUG   HandlerThread:707 [meta.py:_save_patches():127] save patches
+2021-05-01 06:00:50,846 DEBUG   HandlerThread:707 [meta.py:_save_patches():169] save patches done
+2021-05-01 06:00:50,846 DEBUG   HandlerThread:707 [meta.py:_save_pip():57] save pip
+2021-05-01 06:00:50,847 DEBUG   HandlerThread:707 [meta.py:_save_pip():71] save pip done
+2021-05-01 06:00:50,847 DEBUG   HandlerThread:707 [meta.py:probe():252] probe done
+2021-05-01 06:00:50,853 DEBUG   SenderThread:707 [sender.py:send():173] send: files
+2021-05-01 06:00:50,853 INFO    SenderThread:707 [sender.py:_save_file():808] saving file wandb-metadata.json with policy now
+2021-05-01 06:00:50,854 INFO    SenderThread:707 [sender.py:_save_file():808] saving file code/manythings/training/train.py with policy now
+2021-05-01 06:00:50,855 INFO    SenderThread:707 [sender.py:_save_file():808] saving file diff.patch with policy now
+2021-05-01 06:00:50,863 DEBUG   HandlerThread:707 [handler.py:handle_request():121] handle_request: stop_status
+2021-05-01 06:00:50,864 DEBUG   SenderThread:707 [sender.py:send_request():183] send_request: stop_status
+2021-05-01 06:00:52,406 DEBUG   HandlerThread:707 [handler.py:handle_request():121] handle_request: get_summary
+2021-05-01 06:00:52,406 DEBUG   SenderThread:707 [sender.py:send():173] send: files
+2021-05-01 06:00:52,407 INFO    SenderThread:707 [sender.py:_save_file():808] saving file model-best.h5 with policy live
