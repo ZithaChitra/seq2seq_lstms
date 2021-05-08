@@ -13,5 +13,9 @@ manythings/models/Model.py
 manythings/models/__init__.py
 manythings/networks/__init__.py
 manythings/networks/nn_lstm1.py
+manythings/networks/nn_lstm2.py
+manythings/networks/nn_lstm3.py
+manythings/networks/other.py
+manythings/networks/other2.py
 manythings/training/__init__.py
 manythings/training/train.py

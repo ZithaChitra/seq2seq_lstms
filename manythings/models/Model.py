@@ -24,7 +24,7 @@ class Model():
 
         if dataset_args == None:
             dataset_args = {}
-        self.data = dataset_cls(**dataset_args)
+        self.data = dataset_cls()
         self.data.load_or_generate()
         self.data.preprocess()
         self.data_shapes = self.data.io_shapes

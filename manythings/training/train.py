@@ -84,16 +84,24 @@ def train(
     output_schema = Schema([TensorSpec(np.dtype(np.float32), (-1, 93))])
 
     signature = ModelSignature(inputs=input_schema, outputs=output_schema)
+    data = dataset_cls_()
+    data.load_or_generate()
+    data.preprocess()
 
     with wandb.init(project=proj_name, config=config):
         """"""
         config = wandb.config
         model = model_cls_(dataset_cls_, network_fn_, net_args, dataset_args)
+		
 
         callbacks = [WandbCallback(
+			# training_data=(
+            #     [data.encoder_input_data, data.decoder_input_data],
+            #     data.decoder_target_data
+            # ),
 			# log_weights=True,
-			#  log_gradients=True
-			 )]
+			# log_gradients=True
+            )]
 
         model.fit(callbacks=callbacks)
         mlflow.keras.save_model(model.network,
