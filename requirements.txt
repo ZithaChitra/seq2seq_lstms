@@ -3,3 +3,4 @@ pyyaml
 click
 mlflow
 wandb
+tensorflow==2.2.0

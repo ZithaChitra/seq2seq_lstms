@@ -1,0 +1,14 @@
+program: manythings/train/train.py
+method: random
+metric:
+  goal: minimize
+  name: val_loss
+parameters:
+  latent_dim:
+    min: 50
+    max: 120
+early_terminate:
+  type: hyperband
+  s: 2
+  eta: 3
+  max_iter: 27
